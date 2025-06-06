@@ -81,6 +81,19 @@ async function insertSampleJobs() {
   }
 }
 
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Job Board API is running!',
+    endpoints: {
+      health: '/api/health',
+      jobs: '/api/jobs',
+      createJob: 'POST /api/jobs',
+      getJob: '/api/jobs/:id',
+      searchJobs: '/api/jobs/search/:query'
+    }
+  });
+});
 // Routes
 // Create a new job
 app.post('/api/jobs', async (req, res) => {
