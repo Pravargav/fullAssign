@@ -6,6 +6,8 @@ interface CreateJobModalProps {
   onClose: () => void;
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 export const CreateJobModal: React.FC<CreateJobModalProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     jobTitle: '',
@@ -58,7 +60,7 @@ export const CreateJobModal: React.FC<CreateJobModalProps> = ({ isOpen, onClose 
     setIsLoading(true);
     
     try {
-      const response = await fetch('http://localhost:5000/api/jobs', {
+      const response = await fetch(`${API_BASE_URL}/api/jobs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -39,7 +39,7 @@ export const JobGrid: React.FC = () => {
   const [pagination, setPagination] = useState<Pagination | null>(null);
 
   // API base URL - adjust this to match your backend URL
-  const API_BASE_URL = 'http://localhost:5000';
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';;
 
   // Build query parameters from search filters
   const buildQueryParams = (pageNum: number) => {
